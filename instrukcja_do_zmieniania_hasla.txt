@@ -1,0 +1,9 @@
+>> ipconfig 
+.
+.
+.
+-> default gateway <- (set as url)
+
+admin, admin 
+user, user 
+admin, user 
