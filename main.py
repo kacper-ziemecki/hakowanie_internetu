@@ -1,8 +1,36 @@
 import pyautogui
 from selenium import webdriver
 import time
-
+import pprint
 listaznakow = "abcdefghijklmnoprstuwz1234567890"
+
+class Lista():
+	def __init__(self, nazwaPliku, elementy = []):
+		self.nazwaPliku = nazwaPliku
+		self.plik = open(nazwaPliku)
+
+	def __getitem__(self, klucz):
+		self.plik = open(self.nazwaPliku)
+		self.plikJakoLista = self.plik.readlines() 
+		return self.plikJakoLista[klucz]
+
+	def __setitem__(self, klucz, wartosc):
+		self.plikJakoLista = self.plik.readlines() 
+		self.plikJakoLista[klucz] = str(wartosc) + '\n' 
+		self.plik = open(self.nazwaPliku, 'w')
+		self.plik.writelines(self.plikJakoLista)
+		return
+
+	def append(self, element):
+		self.plik = open(self.nazwaPliku, 'a')
+		self.plik.write(str(element) + '\n')
+		return
+
+	def __str__(self):
+		self.plik = open(self.nazwaPliku)
+		self.plikJakoLista = plik.readlines() 
+		self.listaDoWyswietlenia = pprint.pformat(self.plikJakoLista) 
+		return self.listaDoWyswietlenia
 
 def sprawdzanie_czy_przeszlo():
 	pass
