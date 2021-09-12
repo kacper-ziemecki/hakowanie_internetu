@@ -50,7 +50,7 @@ def wpisz_przez_pyautogui(napisLogin, napisHaslo):
 	else:
 		return False
 
-def wpisz_haslo(length, lista = [], danyNapis = "", dlugosc = 0):
+def wpisz_haslo(length, lista = Lista("lista_hasel.txt"), danyNapis = "", dlugosc = 0):
 	dlugosc += 1
 
 	if(dlugosc > length):
@@ -66,7 +66,7 @@ def wpisz_haslo(length, lista = [], danyNapis = "", dlugosc = 0):
 	return lista
 
 	
-lista_wszystkich_hasel = []
+lista_wszystkich_hasel = Lista("lista_hasel.txt")
 for i in range(1, 10):
 	lista_hasel = wpisz_haslo(i)	
 	lista_wszystkich_hasel.append(lista_hasel) # zmiana na moją listę
