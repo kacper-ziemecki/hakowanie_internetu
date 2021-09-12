@@ -31,7 +31,7 @@ class Lista():
 
   def __str__(self):
     self.plik = open(self.nazwaPliku)
-    self.plikJakoLista = plik.readlines() 
+    self.plikJakoLista = self.plik.readlines() 
     self.listaDoWyswietlenia = pprint.pformat(self.plikJakoLista) 
     return self.listaDoWyswietlenia
   
@@ -45,19 +45,7 @@ def sprawdzanie_czy_przeszlo():
 	pass
 
 def wpisz_przez_pyautogui(napisLogin, napisHaslo):
-	objektStrony = webdriver.Edge("10.1.1.1")
-	time.sleep(5)
-	pyautogui.moveTo( ... ) # koordynaty login
-	pyautogui.click()
-	pyautogui.typewrite(napis)
-	pyautogui.moveTo( ... ) #koordynaty hasła
-	pyautogui.click()
-	pyautogui.typewrite(napisHaslo)
-	time.sleep(5)
-	if(sprawdzanie_czy_przeszlo() == True):
-		return [napisLogin, napisHaslo]
-	else:
-		return False
+	return False
 
 def wpisz_haslo(length, lista = Lista("lista_hasel.txt"), danyNapis = "", dlugosc = 0):
 	dlugosc += 1
@@ -78,7 +66,7 @@ def wpisz_haslo(length, lista = Lista("lista_hasel.txt"), danyNapis = "", dlugos
 lista_wszystkich_hasel = Lista("lista_hasel.txt")
 for i in range(1, 10):
 	lista_hasel = wpisz_haslo(i)	
-	lista_wszystkich_hasel.append(lista_hasel) # zmiana na moją listę
+  
 powiodlo_sie = False
 dane_do_zalogowania = ["login", "haslo"]
 for element in lista_wszystkich_hasel:
