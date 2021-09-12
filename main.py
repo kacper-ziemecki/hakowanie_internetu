@@ -21,13 +21,14 @@ def wpisz_przez_pyautogui(napisLogin, napisHaslo):
 		return [napisLogin, napisHaslo]
 	else:
 		return False
+
 def wpisz_haslo(length, lista = [], danyNapis = "", dlugosc = 0):
 	dlugosc += 1
 
 	if(dlugosc > length):
-		lista.append(danyNapis)
+		lista.append(danyNapis) # zmiana na moją listę
 
-		return lista
+		return lista # zmiana na moją listę
 
 	for znak in listaznakow:
 		nastepnyNapis = danyNapis[:]
@@ -40,7 +41,7 @@ def wpisz_haslo(length, lista = [], danyNapis = "", dlugosc = 0):
 lista_wszystkich_hasel = []
 for i in range(1, 10):
 	lista_hasel = wpisz_haslo(i)	
-	lista_wszystkich_hasel.append(lista_hasel)
+	lista_wszystkich_hasel.append(lista_hasel) # zmiana na moją listę
 powiodlo_sie = False
 dane_do_zalogowania = ["login", "haslo"]
 for element in lista_wszystkich_hasel:
@@ -52,6 +53,7 @@ for element in lista_wszystkich_hasel:
 		dane_do_zalogowania[0] = wartosc_zwracana[0]
 		dane_do_zalogowania[1] = wartosc_zwracana[1]
 		break
+
 if(powiodlo_sie == True):
 	print("operacja do logowania powiodla sie DANE: " + str(dane_do_zalogowania))
 	

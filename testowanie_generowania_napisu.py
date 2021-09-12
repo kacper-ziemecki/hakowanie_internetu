@@ -1,3 +1,5 @@
+listaznakow = "abcdefghijklmnoprstuwz1234567890"
+
 def wpisz_haslo(length, lista = [], danyNapis = "", dlugosc = 0):
 	dlugosc += 1
 
