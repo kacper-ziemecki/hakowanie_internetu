@@ -5,32 +5,41 @@ import pprint
 listaznakow = "abcdefghijklmnoprstuwz1234567890"
 
 class Lista():
-	def __init__(self, nazwaPliku, elementy = []):
-		self.nazwaPliku = nazwaPliku
-		self.plik = open(nazwaPliku)
+  def __init__(self, nazwaPliku, elementy = []):
+    self.nazwaPliku = nazwaPliku
+    self.plik = open(nazwaPliku, 'a') 
+    for element in elementy:
+      self.plik.write(str(element) + "\n")
+  
+  def __getitem__(self, klucz):
+    self.plik = open(self.nazwaPliku)
+    self.plikJakoLista = self.plik.readlines() 
+    return self.plikJakoLista[klucz]
 
-	def __getitem__(self, klucz):
-		self.plik = open(self.nazwaPliku)
-		self.plikJakoLista = self.plik.readlines() 
-		return self.plikJakoLista[klucz]
+  def __setitem__(self, klucz, wartosc):
+    self.plik = open(self.nazwaPliku, 'r')
+    self.plikJakoLista = self.plik.readlines() 
+    self.plikJakoLista[klucz] = str(wartosc) + '\n' 
+    self.plik = open(self.nazwaPliku, 'w')
+    self.plik.writelines(self.plikJakoLista)
+    return
 
-	def __setitem__(self, klucz, wartosc):
-		self.plikJakoLista = self.plik.readlines() 
-		self.plikJakoLista[klucz] = str(wartosc) + '\n' 
-		self.plik = open(self.nazwaPliku, 'w')
-		self.plik.writelines(self.plikJakoLista)
-		return
+  def append(self, element):
+    self.plik = open(self.nazwaPliku, 'a')
+    self.plik.write(str(element) + '\n')
+    return
 
-	def append(self, element):
-		self.plik = open(self.nazwaPliku, 'a')
-		self.plik.write(str(element) + '\n')
-		return
+  def __str__(self):
+    self.plik = open(self.nazwaPliku)
+    self.plikJakoLista = plik.readlines() 
+    self.listaDoWyswietlenia = pprint.pformat(self.plikJakoLista) 
+    return self.listaDoWyswietlenia
+  
+  def clear(self):
+    self.plik = open(self.nazwaPliku, 'w') 
+    self.plik.write("")  
+    return
 
-	def __str__(self):
-		self.plik = open(self.nazwaPliku)
-		self.plikJakoLista = plik.readlines() 
-		self.listaDoWyswietlenia = pprint.pformat(self.plikJakoLista) 
-		return self.listaDoWyswietlenia
 
 def sprawdzanie_czy_przeszlo():
 	pass
