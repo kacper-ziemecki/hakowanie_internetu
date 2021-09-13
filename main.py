@@ -4,6 +4,9 @@ import time
 import pprint
 listaznakow = "abcdefghijklmnoprstuwz1234567890"
 
+KOORDYNATY_LOGIN = ()
+KOORDYNATY_HASLA = ()
+
 class Lista():
   def __init__(self, nazwaPliku, elementy = []):
     self.nazwaPliku = nazwaPliku
