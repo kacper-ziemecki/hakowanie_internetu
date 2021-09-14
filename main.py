@@ -6,19 +6,19 @@ import sys
 
 listaznakow = "abcdefghijklmnoprstuwz1234567890_-"
 	
-KOORDYNATY_LOGIN = ()
-KOORDYNATY_HASLA = ()
+KOORDYNATY_LOGIN = [-1, -1]
+KOORDYNATY_HASLA = [-1, -1]
 
 if(not sys.argv[1:]):
 	KOORDYNATY_LOGIN[0] = input("wpisz lokalizację login na osi x") 
 	KOORDYNATY_LOGIN[1] = input("wpisz lokalizację login na osi y") 
 	KOORDYNATY_HASLA[0] = input("wpisz lokalizację hasła na osi x")
 	KOORDYNATY_HASLA[1] = input("wpisz lokalizację hasła na osi y")
-	plik_danych = open("lokalizacje.txt", 'a')
-	plik_danych.write("KOORDYNATY_LOGIN[0] = " + str(KOORDYNATY_LOGIN[0]))
-	plik_danych.write("KOORDYNATY_LOGIN[1] = " + str(KOORDYNATY_LOGIN[1]))
-	plik_danych.write("KOORDYNATY_HASLA[0] = " + str(KOORDYNATY_HASLA[0]))
-	plik_danych.write("KOORDYNATY_HASLA[1] = " + str(KOORDYNATY_HASLA[1]))
+	plik_danych = open("lokalizacje.txt", 'w')
+	plik_danych.write("KOORDYNATY_LOGIN[0] = " + str(KOORDYNATY_LOGIN[0]) + '\n')
+	plik_danych.write("KOORDYNATY_LOGIN[1] = " + str(KOORDYNATY_LOGIN[1]) + '\n')
+	plik_danych.write("KOORDYNATY_HASLA[0] = " + str(KOORDYNATY_HASLA[0]) + '\n')
+	plik_danych.write("KOORDYNATY_HASLA[1] = " + str(KOORDYNATY_HASLA[1]) + '\n')
 	print("dane do zlogkalizowanie elementow login i haslo zostaly podane do programu i zapisane na pliku lokalizaja.txt")
 else:
 	raise Exception("Nie podajemy rzadnych argumentow do programu (podajemy je poprzez sys.stidn lub pipe - | )")
@@ -109,11 +109,11 @@ def wpisz_login(length, lista = Lista("lista_login.txt"), danyNapis = "", dlugos
 	return lista
 	
 lista_wszystkich_hasel = Lista("lista_hasel.txt")
-for i in range(1, 2):
+for i in range(1, 10):
 	lista_hasel = wpisz_haslo(i)	
 
 lista_wszystkich_login = Lista("lista_wszystkich_login.txt")
-for i in range(1, 2):
+for i in range(1, 10):
 	lista_login = wpisz_login(i)
 
 powiodlo_sie = False
@@ -137,3 +137,4 @@ if(powiodlo_sie == True):
 	print("operacja do logowania powiodla sie DANE: " + str(dane_do_zalogowania))
 	
 print("koniec")
+input()
