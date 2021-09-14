@@ -60,20 +60,19 @@ class Lista():
     return
 
 
-def sprawdzanie_czy_przeszlo():
+def sprawdzanie_czy_przeszlo(ObjektStrony):
 	pass
 
-def wpisz_przez_pyautogui(napisLogin, napisHaslo):
-	objektStrony = webdriver.Edge("10.1.1.1")
-	time.sleep(5)
+def wpisz_przez_pyautogui(napisLogin, napisHaslo, ObjektStrony):
+	time.sleep(1)
 	pyautogui.moveTo(x = KOORDYNATY_LOGIN[0], y = KOORDYNATY_LOGIN[1]) # koordynaty login
 	pyautogui.click()
 	pyautogui.typewrite(napis)
 	pyautogui.moveTo(x = KOORDYNATY_HASLA[0], y = KOORDYNATY_HASLA[1]) #koordynaty hasła
 	pyautogui.click()
 	pyautogui.typewrite(napisHaslo)
-	time.sleep(5)
-	if(sprawdzanie_czy_przeszlo() == True):
+	time.sleep(1)
+	if(sprawdzanie_czy_przeszlo(ObjektStrony) == True):
 		return [napisLogin, napisHaslo]
 	else:
 		return False
@@ -119,13 +118,15 @@ for i in range(1, 10):
 powiodlo_sie = False
 dane_do_zalogowania = ["login", "haslo"]
 
+objektStrony = webdriver.Edge("10.1.1.1") # zainstalowac dodatek do edge
+
 for haslo in lista_wszystkich_hasel:
 	for login in lista_wszystkich_login:
 
 		print("wpisywanie login: " + str(login))
 		print("wpisywanie hasla: " + str(haslo))
 
-		warrtosc_zwracana = wpisz_przez_pyautogui(haslo, login) #zmienić na dwa argumenty i je generować tak samo jak haslo
+		warrtosc_zwracana = wpisz_przez_pyautogui(haslo, login, ObjektStrony) 
 
 		if(type(wartosc_zwracana) == type(["login", "haslo"])):
 			powiodlo_sie = True
