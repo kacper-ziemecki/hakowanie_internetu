@@ -126,7 +126,9 @@ for i in range(1, 10):
 powiodlo_sie = False
 dane_do_zalogowania = ["login", "haslo"]
 
-objektStrony = webdriver.Edge("10.1.1.1") # zainstalowac dodatek do edge
+options = EdgeOptions()
+options.use_chromium = True
+objektStrony = webdriver.Edge("10.1.1.1", options = options) # zainstalowac dodatek do edge
 
 for haslo in lista_wszystkich_hasel:
 	for login in lista_wszystkich_login:
