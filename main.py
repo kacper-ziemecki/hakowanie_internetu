@@ -61,7 +61,15 @@ class Lista():
 
 
 def sprawdzanie_czy_przeszlo(ObjektStrony):
-	pass
+	try: # możliwość Exception w trakcie nie zlokalizowania
+		lokalizacja = pyautogui.locateOnScreen("lokalizowanie error.PNG") # wipsanie pliku do error
+	except:
+		return True
+
+	if(not lokalizacja): # możliwość None w trakcie nie zlokalizowania error
+		return True
+
+	return False
 
 def wpisz_przez_pyautogui(napisLogin, napisHaslo, ObjektStrony):
 	time.sleep(1)
